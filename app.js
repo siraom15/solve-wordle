@@ -32,9 +32,6 @@ let app = new Vue({
         .map((e) => e.toLowerCase())
         .filter((e) => e != "");
 
-      console.log(contain);
-      console.log(notContain);
-
       if (contain.length > 0) {
         console.log("Find Contain");
         result = result.filter((e) => {
