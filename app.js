@@ -1,4 +1,4 @@
-import { wordList, wordList2 } from "./wordList.js";
+import { wordList } from "./wordList.js";
 
 let app = new Vue({
   el: "#app",

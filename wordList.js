@@ -2314,9 +2314,6 @@ let wordList = [
   "artsy",
   "rural",
   "shave",
-];
-
-let wordList2 = [
   "aahed",
   "aalii",
   "aargh",
@@ -12976,4 +12973,4 @@ let wordList2 = [
   "zymic",
 ];
 
-export { wordList, wordList2 };
+export { wordList };
