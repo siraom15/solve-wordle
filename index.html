@@ -11,67 +11,95 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
+
+        html,
+        * {
+            font-family: 'Hubballi', cursive;
+        }
+    </style>
 </head>
 
-<body>
+<body class="">
     <div id="app">
         <div class="container p-5">
-
-            <div class="card mt-2">
+            <div class="card mt-2 shadow-lg">
                 <div class="card-body">
-                    <h5>Wordle Solve</h5>
-                    <form class="row g-3">
-                        <div class="col-auto">
-                            <input type="text" class="form-control" id="letter1" placeholder="letter 1" maxlength="1"
-                                v-model="letters[0]">
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" class="form-control" id="letter2" placeholder="letter 2" maxlength="1"
-                                v-model="letters[1]">
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" class="form-control" id="letter3" placeholder="letter 3" maxlength="1"
-                                v-model="letters[2]">
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" class="form-control" id="letter4" placeholder="letter 4" maxlength="1"
-                                v-model="letters[3]">
-                        </div>
-                        <div class="col-auto">
-                            <input type="text" class="form-control" id="letter5" placeholder="letter 5" maxlength="1"
-                                v-model="letters[4]">
-                        </div>
-
-
-                    </form>
+                    <p class="text-center">
+                        🟩🟩🟩🟩🟩
+                    </p>
+                    <h2 class="text-center mt-2 mb-2"> <a href="https://www.nytimes.com/games/wordle/index.html"
+                            class="bg-success text-white">Wordle</a> Solve!</h2>
+                    <p class="text-center">
+                        🟩🟩🟩🟩🟩
+                    </p>
                     <hr>
-                    <form class="row g-3">
+                    <form class="row g-3 d-flex justify-content-center">
+                        <div class="col-auto">
+                            <h3><span class="text-white bg-warning">Known</span> /<span
+                                    class="text-white bg-dark">Unknown</span> Letter : </h3>
+                        </div>
                         <div class="col-auto">
                             <input type="text" class="form-control" placeholder="Contain Letter" maxlength="26"
                                 v-model="contain">
-                            <div class="form-text">Contain Letter input with no seperator</div>
+                            <div class="form-text">Contain Letter input with no seperator.<br>ex. your
+                                <span class="text-white bg-warning">Yellow</span> letters is a
+                                k j, input akj
+                            </div>
 
                         </div>
                         <div class="col-auto">
                             <input type="text" class="form-control" placeholder="Not Contain Letter" maxlength="26"
                                 v-model="notContain">
-                                <div class="form-text">Not Contain Letter input with no seperator</div>
+                            <div class="form-text">Not Contain Letter input with no seperator.<br>ex. your <span
+                                    class="text-white bg-dark">Black</span> letter
+                                is a k j, input akj</div>
 
                         </div>
                     </form>
-                    <form class="row g-3 mt-2">
-                        <div class="col-auto">
-                            <div class="btn btn-primary mb-3" v-on:click="find">Solve</div>
+                    <hr>
+                    <form class="row g-3 d-flex justify-content-center">
+                        <div class="col-auto col-lg-12 col-md-12 text-center">
+                            <h3><span class="text-white bg-success">Correct</span> Position Letter </h3>
                         </div>
-                        <div class="form-text">If you don't know leave it blank.</div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control" placeholder="letter #1" maxlength="1"
+                                v-model="letters[0]">
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control" placeholder="letter #2" maxlength="1"
+                                v-model="letters[1]">
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control" placeholder="letter #3" maxlength="1"
+                                v-model="letters[2]">
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control" placeholder="letter #4" maxlength="1"
+                                v-model="letters[3]">
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" class="form-control" placeholder="letter #5" maxlength="1"
+                                v-model="letters[4]">
+                        </div>
+                        <div class="form-text text-center">Known Correct Letter : Input <span
+                                class="text-white bg-success">Green</span> letter with the same position</div>
                     </form>
+                    <hr>
+                    <div class="d-grid gap-2">
+                        <div class="btn btn-success btn-block mb-3 rounded-0" v-on:click="find">
+                            <h4>Solve It !</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="card mt-2">
+            <div class="card mt-4 shadow-lg">
                 <div class="card-body">
-                    <div class="p">Result Words : {{results.length}} words</div>
-                    <textarea name="" v-if="results.length" id="" cols="30" rows="10">{{results.join("\n")}}</textarea>
+                    <h3>Result possible words : <span class="text-white bg-success">{{results.length}}</span> words</h3>
+                    <textarea name="" v-if="results.length" id="" cols="50" rows="10">{{results.join("\n")}}</textarea>
+                    <p class="small">Try to use first word in this list!!</p>
                 </div>
             </div>
 
